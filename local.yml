@@ -1,11 +1,8 @@
 ---
 
-# For non-sudo tasks
 - hosts: localhost
   connection: local
   become: no
 
-  tasks:
-  - name: Install ripgrep
-    community.general.homebrew:
-      name: ripgrep
+  roles:
+    - role: base

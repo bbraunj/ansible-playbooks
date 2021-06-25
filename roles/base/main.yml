@@ -1,3 +1,0 @@
--block:
-  # - import_tasks: software/homebrew.yml
-  - import_tasks: software.yml

@@ -1,6 +1,0 @@
-- hosts: local
-  become: true
-
-  tasks:
-  - name: Install ripgrep
-    command: brew install ripgrep

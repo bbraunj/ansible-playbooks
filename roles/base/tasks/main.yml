@@ -1,0 +1,5 @@
+- block:
+  - name: Install ansible-galaxy requirements
+    command: ansible-galaxy install -r roles/base/requirements.yml
+
+  - import_tasks: software/homebrew.yml

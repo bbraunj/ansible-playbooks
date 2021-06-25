@@ -1,0 +1,45 @@
+- name: Update homebrew
+  community.general.homebrew:
+    update_homebrew: yes
+
+- name: Install python3
+  community.general.homebrew:
+    name: python3
+
+- name: Install luajit (for neovim)
+  community.general.homebrew:
+    state: head
+    name: luajit
+
+- name: Install neovim
+  community.general.homebrew:
+    state: head
+    name: neovim
+
+- name: Install node
+  community.general.homebrew:
+    name: node
+
+- name: Install openssh
+  community.general.homebrew:
+    name: openssh
+
+- name: Install wget
+  community.general.homebrew:
+    name: wget
+
+- name: Install starship
+  community.general.homebrew:
+    name: openssh
+
+- name: Install ripgrep
+  community.general.homebrew:
+    name: ripgrep
+
+- name: Install tmux
+  community.general.homebrew:
+    name: tmux
+
+- name: Upgrade all homebrew packages
+  community.general.homebrew:
+    upgrade_all: yes
