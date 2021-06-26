@@ -1,0 +1,4 @@
+- name: Install pyright Python language server
+  npm:
+    name: pyright
+    global: yes
