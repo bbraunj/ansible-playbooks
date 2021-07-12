@@ -1,0 +1,32 @@
+- name: "Pref: Trackpad Three Finger Drag"
+  command: defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag 1
+
+- name: "Pref: Trackpad Tap to Click"
+  command: defaults write com.apple.AppleMultitouchTrackpad Clicking 1
+
+- name: "Pref: Trackpad Disable Three Finger Horizontal Gesture"
+  command: defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerHorizSwipeGesture 0
+
+- name: "Pref: Trackpad Disable Three Finger Vertical Gesture"
+  command: defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerVertSwipeGesture 0
+
+- name: "Pref: DuckDuckGo Default Search Engine 1/2"
+  command: defaults write "Apple Global Domain" NSPreferredWebServices "{NSWebServicesProviderWebSearch = {NSDefaultDisplayName = DuckDuckGo; NSProviderIdentifier = "com.duckduckgo";};}"
+
+- name: "Pref: DuckDuckGo Default Search Engine 2/2"
+  command: defaults write com.apple.Safari SearchProviderShortName DuckDuckGo
+
+- name: "Pref: Finder vim tab-switching keyboard shortcuts"
+  command: defaults write com.apple.finder NSUserKeyEquivalents '{"Show Next Tab" = "@l"; "Show Previous Tab" = "@h";}'
+
+- name: "Pref: Safari vim tab-switching keyboard shortcuts"
+  command: defaults write com.apple.Safari NSUserKeyEquivalents '{"Show Next Tab" = "@l"; "Show Previous Tab" = "@h";}'
+
+- name: "Pref: KeyRepeat 1"
+  command: defaults write "Apple Global Domain" KeyRepeat 1
+
+- name: "Pref: InitialKeyRepeat 15"
+  command: defaults write "Apple Global Domain" InitialKeyRepeat 15
+
+- name: "Pref: Autohide Dock"
+  command: defaults write com.apple.dock autohide 1

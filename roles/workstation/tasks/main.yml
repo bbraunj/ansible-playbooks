@@ -1,0 +1,18 @@
+- block:
+
+  - import_tasks: preferences.yml
+  - import_tasks: software/homebrew.yml
+
+# - block:
+#   become: yes
+# 
+#   - name: Install yabai scripting addition
+#     command: yabai --install-sa
+# 
+#   - name: Load yabai scripting addition
+#     command: yabai --load-sa
+# 
+# - block:
+# 
+#   - name: Run yabai
+#     command: brew services start yabai

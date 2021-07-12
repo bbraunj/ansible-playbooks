@@ -8,12 +8,10 @@
 
 - name: Install luajit (for neovim)
   community.general.homebrew:
-    state: head
     name: luajit
 
 - name: Install neovim
   community.general.homebrew:
-    state: head
     name: neovim
 
 - name: Install node

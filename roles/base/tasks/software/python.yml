@@ -1,6 +1,9 @@
-- name: Install scipy packages + numba
-  pip:
-    name: numpy, scipy, matplotlib, ipython, jupyter, pandas, sympy, nose, numba
+- name: Install pip
+  command: curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py; python3 get-pip.py
+
+# - name: Install scipy packages + numba
+#   pip:
+#     name: numpy, scipy, matplotlib, ipython, jupyter, pandas, sympy, nose, numba
 
 - name: Install flake8
   pip:
