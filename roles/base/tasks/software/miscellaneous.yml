@@ -1,4 +1,10 @@
-- name: Install pyright Python language server
-  npm:
-    name: pyright
-    global: yes
+- name: Miscellaneous Base
+  tags:
+    - software
+    - miscellaneous
+
+  block:
+  - name: Install pyright Python language server
+    npm:
+      name: pyright
+      global: yes

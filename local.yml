@@ -6,4 +6,8 @@
 
   roles:
     - role: base
+      tags:
+        - base
     - role: workstation
+      tags:
+        - workstation

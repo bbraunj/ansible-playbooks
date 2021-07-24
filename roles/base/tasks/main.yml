@@ -4,3 +4,4 @@
 
   - import_tasks: software/homebrew.yml
   - import_tasks: software/python.yml
+  - import_tasks: software/miscellaneous.yml

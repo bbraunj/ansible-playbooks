@@ -1,26 +1,32 @@
-- name: Install pip
-  command: curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py; python3 get-pip.py
+- name: Python Base
+  tags:
+    - software
+    - python
 
-# - name: Install scipy packages + numba
-#   pip:
-#     name: numpy, scipy, matplotlib, ipython, jupyter, pandas, sympy, nose, numba
+  block:
+  - name: Install pip
+    command: curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py; python3 get-pip.py
 
-- name: Install flake8
-  pip:
-    name: flake8
+  # - name: Install scipy packages + numba
+  #   pip:
+  #     name: numpy, scipy, matplotlib, ipython, jupyter, pandas, sympy, nose, numba
 
-- name: Install neovim Python package
-  pip:
-    name: neovim
+  - name: Install flake8
+    pip:
+      name: flake8
 
-- name: Install pudb
-  pip:
-    name: pudb
+  - name: Install neovim Python package
+    pip:
+      name: neovim
 
-- name: Install pytest and pytest-cov
-  pip:
-    name: pytest, pytest-cov
+  - name: Install pudb
+    pip:
+      name: pudb
 
-- name: Install sphinx and related packages
-  pip:
-    name: sphinx, sphinx-argparse, sphinx-rtd-theme
+  - name: Install pytest and pytest-cov
+    pip:
+      name: pytest, pytest-cov
+
+  - name: Install sphinx and related packages
+    pip:
+      name: sphinx, sphinx-argparse, sphinx-rtd-theme
