@@ -1,0 +1,8 @@
+#!/bin/bash
+
+base_name=$(echo $1 | sed "s/\.tex//")
+cat ~/.templates/asme2ej.tex | sed "s/sample_bib/$base_name/" > ${base_name}.tex
+cp ~/.templates/sample_bib.bib ${base_name}.bib
+cp ~/.templates/asmems4.bst .
+cp ~/.templates/asme2ej.cls .
+nvim ${base_name}.tex

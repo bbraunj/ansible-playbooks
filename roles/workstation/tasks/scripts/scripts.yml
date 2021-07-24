@@ -1,0 +1,17 @@
+- name: Scripts
+  tags:
+  - scripts
+
+  block:
+  - name: Copy scripts
+    ansible.builtin.copy:
+      src: .scripts
+      dest: "/Users/{{ user }}/"
+      owner: "{{ user }}"
+
+  - name: Copy tex templates
+    ansible.builtin.copy:
+      src: .templates
+      dest: "/Users/{{ user }}/"
+      owner: "{{ user }}"
+      backup: yes

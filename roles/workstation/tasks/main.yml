@@ -2,6 +2,7 @@
 
   - import_tasks: preferences.yml
   - import_tasks: dotfiles/dotfiles.yml
+  - import_tasks: scripts/scripts.yml
   - import_tasks: software/homebrew.yml
 
 # - block:
