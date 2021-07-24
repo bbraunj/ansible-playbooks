@@ -5,38 +5,51 @@
     - cask
 
   block:
-  - name: Install iTerm2
+  - name: Install Alfred
     community.general.homebrew_cask:
-      name: iterm2
+      name: alfred
 
   - name: Install AppCleaner
     community.general.homebrew_cask:
       name: appcleaner
 
-  - name: Install Alfred
+  - name: Install Bartender
     community.general.homebrew_cask:
-      name: alfred
+      name: bartender
 
-  - name: Install Jump Desktop
+  - name: Install BetterTouchTool
     community.general.homebrew_cask:
-      name: jump
+      name: bettertouchtool
 
-  - name: Install Microsoft Remote Desktop
+  - name: Install BitBar
     community.general.homebrew_cask:
-      name: microsoft-remote-desktop
-
-  - name: Install Yam Display
-    community.general.homebrew_cask:
-      name: yam-display
+      name: bitbar
 
   - name: Install Bitwarden
     community.general.homebrew_cask:
       name: bitwarden
 
+  - name: Install iTerm2
+    community.general.homebrew_cask:
+      name: iterm2
+
+  - name: Install Jump Desktop
+    community.general.homebrew_cask:
+      name: jump
+
+  - name: Install MacTeX
+    tags: large
+    community.general.homebrew_cask:
+      name: mactex-no-gui
+
   - name: Install Microsoft Office
     tags: large
     community.general.homebrew_cask:
       name: microsoft-office
+
+  - name: Install Microsoft Remote Desktop
+    community.general.homebrew_cask:
+      name: microsoft-remote-desktop
 
   - name: Install Microsoft Teams
     tags: large
@@ -47,6 +60,14 @@
     community.general.homebrew_cask:
       name: nextcloud
 
+  - name: Install SensisbleSideButtons
+    community.general.homebrew_cask:
+      name: sensiblesidebuttons
+
+  - name: Install Skim
+    community.general.homebrew_cask:
+      name: skim
+
   - name: Install Spotify
     community.general.homebrew_cask:
       name: spotify
@@ -55,51 +76,34 @@
     community.general.homebrew_cask:
       name: stats
 
-  - name: Install Bartender
-    community.general.homebrew_cask:
-      name: bartender
-
   - name: Install The Unarchiver
     community.general.homebrew_cask:
       name: the-unarchiver
 
-  - name: Install WebPlotDigitizer
-    community.general.homebrew_cask:
-      name: webplotdigitizer
-
-  - name: Install VLC
-    community.general.homebrew_cask:
-      name: vlc
-
-  - name: Install UnnaturalScrollWheels
-    community.general.homebrew_cask:
-      name: unnaturalscrollwheels
+  - name: Install TexLab
+    community.general.homebrew:
+      name: texlab
 
   - name: Install Typora
     community.general.homebrew_cask:
       name: typora
 
-  - name: Install SensisbleSideButtons
+  - name: Install UnnaturalScrollWheels
     community.general.homebrew_cask:
-      name: sensiblesidebuttons
+      name: unnaturalscrollwheels
+
+  - name: Install VLC
+    community.general.homebrew_cask:
+      name: vlc
+
+  - name: Install WebPlotDigitizer
+    community.general.homebrew_cask:
+      name: webplotdigitizer
 
   - name: Install Yabai
     community.general.homebrew:
       name: koekeishiya/formulae/yabai
 
-  - name: Install BitBar
+  - name: Install Yam Display
     community.general.homebrew_cask:
-      name: bitbar
-
-  - name: Install Skim
-    community.general.homebrew_cask:
-      name: skim
-
-  - name: Install MacTeX
-    tags: large
-    community.general.homebrew_cask:
-      name: mactex-no-gui
-
-  - name: Install TexLab
-    community.general.homebrew:
-      name: texlab
+      name: yam-display
