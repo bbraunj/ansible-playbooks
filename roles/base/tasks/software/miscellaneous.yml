@@ -1,10 +1,19 @@
 - name: Miscellaneous Base
   tags:
     - software
-    - miscellaneous
+    - misc
 
   block:
   - name: Install pyright Python language server
     npm:
       name: pyright
       global: yes
+
+  - name: Upgrade vim-plug
+    ansible.builtin.shell: nvim +PlugUpgrade +qall
+
+  - name: Install vim plugins via vim-plug & vimrc
+    ansible.builtin.shell: nvim +PlugInstall +qall
+
+  - name: Update vim plugins
+    ansible.builtin.shell: nvim +PlugUpdate +qall

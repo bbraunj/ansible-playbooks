@@ -47,6 +47,28 @@ snippet figure
 \end{figure}
 endsnippet
 
+snippet figure_multi
+\begin{figure}[hbt!]
+
+\begin{subfigure}[h]{\linewidth}
+	\centering
+	\includegraphics[width=\textwidth]{$1}
+	\caption{Caption}
+	\label{fig:label}
+\end{subfigure}
+
+\begin{subfigure}[h]{\linewidth}
+	\centering
+	\includegraphics[width=\textwidth]{$1}
+	\caption{Caption}
+	\label{fig:label}
+\end{subfigure}
+
+\caption{Caption}
+\label{fig:label}
+\end{figure}
+endsnippet
+
 snippet table
 \begin{table}[hbt!]
 \centering

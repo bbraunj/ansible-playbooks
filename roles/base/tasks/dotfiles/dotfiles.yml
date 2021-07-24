@@ -4,9 +4,72 @@
   - dotfiles
 
   block:
+  - name: Copy .gitconfig
+    ansible.builtin.copy:
+      src: .gitconfig
+      dest: "/Users/{{ user }}/.gitconfig"
+      owner: "{{ user }}"
+      backup: yes
+
+  - name: Copy .inputrc
+    ansible.builtin.copy:
+      src: .inputrc
+      dest: "/Users/{{ user }}/.inputrc"
+      owner: "{{ user }}"
+      backup: yes
+
+  - name: Copy .antigen.zsh
+    ansible.builtin.copy:
+      src: .antigen.zsh
+      dest: "/Users/{{ user }}/.antigen.zsh"
+      owner: "{{ user }}"
+      backup: yes
+
+  - name: Copy .config directory
+    ansible.builtin.copy:
+      src: .config
+      dest: "/Users/{{ user }}/"
+      owner: "{{ user }}"
+      backup: yes
+
+  - name: Copy .tmux.conf
+    ansible.builtin.copy:
+      src: .tmux.conf
+      dest: "/Users/{{ user }}/.tmux.conf"
+      owner: "{{ user }}"
+      backup: yes
+
+  - name: Copy .tmux directory
+    ansible.builtin.copy:
+      src: .tmux
+      dest: "/Users/{{ user }}/"
+      owner: "{{ user }}"
+      backup: yes
+
+  - name: Copy .zshrc
+    ansible.builtin.copy:
+      src: .zshrc
+      dest: "/Users/{{ user }}/.zshrc"
+      owner: "{{ user }}"
+      backup: yes
+
   - name: Copy .vimrc
     ansible.builtin.copy:
       src: .vimrc
       dest: "/Users/{{ user }}/.vimrc"
       owner: "{{ user }}"
-      group: "{{ group }}"
+      backup: yes
+
+  - name: Copy .vim directory (no plugins)
+    ansible.builtin.copy:
+      src: .vim
+      dest: "/Users/{{ user }}/"
+      owner: "{{ user }}"
+      backup: yes
+
+  - name: Copy system-specific dotfiles if not already present
+    ansible.builtin.copy:
+      src: system_specific
+      dest: "/Users/{{ user }}/.config/"
+      owner: "{{ user }}"
+      force: no

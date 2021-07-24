@@ -1,3 +1,5 @@
+# This file moved here by Ansible ;)
+
 set -o vi
 
 #   antigen
@@ -48,3 +50,7 @@ HISTSIZE=100000
 SAVEHIST=20000
 
 bindkey '^N' autosuggest-accept
+
+
+# Lastly, source any system-specific settings you may have.
+source ~/.config/system_specific/.zshrc

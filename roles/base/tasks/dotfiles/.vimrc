@@ -1,7 +1,7 @@
+" This file moved here by Ansible ;)
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
-
-" This file moved here by Ansible ;)
 
 " ########################################################################
 " ############################  Vim Settings #############################
@@ -323,3 +323,7 @@ vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 
 EOF
+
+
+" Lastly, source any system-specific settings you may have.
+source ~/.config/system_specific/.vimrc
