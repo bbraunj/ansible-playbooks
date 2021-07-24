@@ -1,0 +1,12 @@
+- name: Dotfiles
+  tags:
+  - preferences
+  - dotfiles
+
+  block:
+  - name: Copy .vimrc
+    ansible.builtin.copy:
+      src: .vimrc
+      dest: "/Users/{{ user }}/.vimrc"
+      owner: "{{ user }}"
+      group: "{{ group }}"
