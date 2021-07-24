@@ -1,0 +1,26 @@
+- name: Dotfiles
+  tags:
+  - preferences
+  - dotfiles
+
+  block:
+  - name: Copy .skhdrc
+    ansible.builtin.copy:
+      src: .skhdrc
+      dest: "/Users/{{ user }}/.skhdrc"
+      owner: "{{ user }}"
+      backup: yes
+
+  - name: Copy .yabairc
+    ansible.builtin.copy:
+      src: .yabairc
+      dest: "/Users/{{ user }}/.yabairc"
+      owner: "{{ user }}"
+      backup: yes
+
+  - name: Copy system-specific dotfiles if not already present
+    ansible.builtin.copy:
+      src: system_specific
+      dest: "/Users/{{ user }}/.config/"
+      owner: "{{ user }}"
+      force: no
