@@ -21,3 +21,9 @@
   lg = log --graph --decorate --oneline
   ba = branch -a
   ch = checkout
+  a  = add
+  d  = diff
+  rb = rebase
+  rc = rebase --continue
+  cm = commit -m
+  ca = commit -am
