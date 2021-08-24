@@ -23,6 +23,10 @@ au BufNewFile,BufRead *.py
     \ set autoindent |
     \ set fileformat=unix
 
+au BufNewFile,BufRead *.java
+    \ set expandtab |
+    \ set autoindent
+
 au BufNewFile,BufRead *.tex
     \ set textwidth=79
 

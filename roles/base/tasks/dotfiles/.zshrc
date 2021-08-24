@@ -8,7 +8,7 @@ source ~/.antigen.zsh
 
 # Plugins
 antigen bundle jocelynmallon/zshmarks
-alias go="jump"
+alias c="jump"
 alias s="bookmark"
 alias d="deletemark"
 alias p="showmarks"
