@@ -199,7 +199,10 @@ hyper - b : window=$(yabai -m query --windows --window | jq -r '.id') && yabai -
 
 
 # Lastly, source any system-specific settings you may have.
-source ~/.config/system_specific/.skhdrc
+
+
+
+
 
 
 # ================= Unused =================
