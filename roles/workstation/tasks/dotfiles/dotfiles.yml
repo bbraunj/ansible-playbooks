@@ -24,3 +24,10 @@
       dest: "/Users/{{ user }}/.config/"
       owner: "{{ user }}"
       force: no
+
+  - name: Copy karabiner-elements configuration
+    ansible.builtin.copy:
+      src: karabiner
+      dest: "/Users/{{ user }}/.config/"
+      owner: "{{ user }}"
+      backup: no
