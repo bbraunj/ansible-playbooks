@@ -83,12 +83,6 @@ fn - y : brew services restart yabai
 fn - q : brew services stop yabai
 fn - w : brew services start yabai
 
-# Switching tabs with vim-based keybindings
-#                                0x21 = [
-cmd - h : skhd -k "cmd + shift - 0x21"
-#                                0x1E = ]
-cmd - l : skhd -k "cmd + shift - 0x1E"
-
 # Windows
 # =======
 # focus window or tmux pane
