@@ -10,7 +10,7 @@
       ansible_distribution == "MacOSX"
     ansible.builtin.copy:
       src: .skhdrc
-      dest: "/Users/{{ user }}/.skhdrc"
+      dest: "{{ home }}/.skhdrc"
       owner: "{{ user }}"
       backup: yes
 
@@ -20,14 +20,14 @@
       ansible_distribution == "MacOSX"
     ansible.builtin.copy:
       src: .yabairc
-      dest: "/Users/{{ user }}/.yabairc"
+      dest: "{{ home }}/.yabairc"
       owner: "{{ user }}"
       backup: yes
 
   - name: Copy system-specific dotfiles if not already present
     ansible.builtin.copy:
       src: system_specific
-      dest: "/Users/{{ user }}/.config/"
+      dest: "{{ home }}/.config/"
       owner: "{{ user }}"
       force: no
 
