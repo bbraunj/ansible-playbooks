@@ -3,6 +3,7 @@
     - software
     - homebrew
     - cask
+    - darwin
 
   block:
   - name: Install Alfred

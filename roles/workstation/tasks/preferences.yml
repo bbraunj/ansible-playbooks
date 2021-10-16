@@ -1,5 +1,7 @@
-- name: Preferences
-  tags: preferences
+- name: macOS Preferences
+  tags:
+    - preferences
+    - darwin
 
   block:
   - name: "Pref: Trackpad Three Finger Drag"

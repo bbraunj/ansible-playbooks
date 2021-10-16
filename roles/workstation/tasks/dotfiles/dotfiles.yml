@@ -5,6 +5,7 @@
 
   block:
   - name: Copy .skhdrc
+    tags: darwin
     ansible.builtin.copy:
       src: .skhdrc
       dest: "/Users/{{ user }}/.skhdrc"
@@ -12,6 +13,7 @@
       backup: yes
 
   - name: Copy .yabairc
+    tags: darwin
     ansible.builtin.copy:
       src: .yabairc
       dest: "/Users/{{ user }}/.yabairc"
@@ -26,6 +28,7 @@
       force: no
 
   - name: Copy karabiner-elements configuration
+    tags: darwin
     ansible.builtin.copy:
       src: karabiner
       dest: "/Users/{{ user }}/.config/"
