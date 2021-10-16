@@ -7,10 +7,6 @@ filetype off                  " required
 " ############################  Vim Settings #############################
 " ########################################################################
 
-" Python Provider
-let g:python_host_prog = '/usr/local/bin/python'
-let g:python3_host_prog = '/usr/local/bin/python3'
-
 " --------- Indentation ---------
 set tabstop=4
 set softtabstop=4
@@ -165,11 +161,11 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 
-Plug 'darfink/vim-plist'
-
 Plug 'terryma/vim-multiple-cursors'
 
 Plug 'majutsushi/tagbar'
+
+Plug 'darfink/vim-plist'
 
 Plug 'lervag/vimtex'
 let g:tex_flavor = 'latex'
