@@ -165,6 +165,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 
+Plug 'darfink/vim-plist'
+
 Plug 'terryma/vim-multiple-cursors'
 
 Plug 'majutsushi/tagbar'
