@@ -2,12 +2,12 @@
 
   - import_tasks: macOS_preferences.yml
     when:
-      ansible_distribution == "MacOSX"
+      ansible_facts['distribution'] == "MacOSX"
   - import_tasks: dotfiles/dotfiles.yml
   - import_tasks: scripts/scripts.yml
   - import_tasks: software/homebrew.yml
     when:
-      ansible_distribution == "MacOSX"
+      ansible_facts['distribution'] == "MacOSX"
 
 # - block:
 #   become: yes

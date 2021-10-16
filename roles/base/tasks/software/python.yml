@@ -5,7 +5,7 @@
 
   block:
   - name: Install pip
-    command: curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py; python3 get-pip.py
+    ansible.builtin.shell: curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && python3 get-pip.py && rm get-pip.py
 
   # - name: Install scipy packages + numba
   #   pip:

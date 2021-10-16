@@ -10,6 +10,6 @@
   - import_tasks: dotfiles/dotfiles.yml
   - import_tasks: software/homebrew.yml
     when:
-      ansible_distribution == "MacOSX"
+      ansible_facts['distribution'] == "MacOSX"
   - import_tasks: software/python.yml
   - import_tasks: software/miscellaneous.yml

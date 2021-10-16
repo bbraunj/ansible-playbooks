@@ -6,7 +6,7 @@
   block:
   - name: Copy Alfred Preferences
     when:
-      ansible_distribution == "MacOSX"
+      ansible_facts['distribution'] == "MacOSX"
     ansible.builtin.copy:
       src: Alfred.alfredpreferences
       dest: "/Users/{{ user }}/Library/Application Support/Alfred/"

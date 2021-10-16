@@ -7,7 +7,7 @@
   - name: Copy .skhdrc
     tags: MacOSX
     when:
-      ansible_distribution == "MacOSX"
+      ansible_facts['distribution'] == "MacOSX"
     ansible.builtin.copy:
       src: .skhdrc
       dest: "{{ home }}/.skhdrc"
@@ -17,7 +17,7 @@
   - name: Copy .yabairc
     tags: MacOSX
     when:
-      ansible_distribution == "MacOSX"
+      ansible_facts['distribution'] == "MacOSX"
     ansible.builtin.copy:
       src: .yabairc
       dest: "{{ home }}/.yabairc"
@@ -34,7 +34,7 @@
   - name: Copy karabiner-elements configuration
     tags: MacOSX
     when:
-      ansible_distribution == "MacOSX"
+      ansible_facts['distribution'] == "MacOSX"
     ansible.builtin.copy:
       src: karabiner
       dest: "/Users/{{ user }}/.config/"
