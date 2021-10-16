@@ -1,7 +1,7 @@
 - name: macOS Preferences
   tags:
     - preferences
-    - darwin
+    - MacOSX
 
   block:
   - name: "Pref: Trackpad Three Finger Drag"

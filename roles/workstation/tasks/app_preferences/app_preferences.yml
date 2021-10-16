@@ -1,10 +1,12 @@
 - name: App Preferences
   tags:
     - app_preferences
-    - darwin
+    - MacOSX
 
   block:
   - name: Copy Alfred Preferences
+    when:
+      ansible_distribution == "MacOSX"
     ansible.builtin.copy:
       src: Alfred.alfredpreferences
       dest: "/Users/{{ user }}/Library/Application Support/Alfred/"

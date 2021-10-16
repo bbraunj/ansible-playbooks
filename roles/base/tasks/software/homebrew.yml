@@ -2,7 +2,7 @@
   tags:
   - software
   - homebrew
-  - darwin
+  - MacOSX
 
   block:
   - name: Update homebrew

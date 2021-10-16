@@ -2,7 +2,14 @@
   - name: Install ansible-galaxy requirements
     command: ansible-galaxy install -r roles/base/requirements.yml
 
+  - name: Print all available facts
+    tags: debug
+    ansible.builtin.debug:
+      var: ansible_facts
+
   - import_tasks: dotfiles/dotfiles.yml
   - import_tasks: software/homebrew.yml
+    when:
+      ansible_distribution == "MacOSX"
   - import_tasks: software/python.yml
   - import_tasks: software/miscellaneous.yml
