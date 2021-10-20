@@ -13,9 +13,9 @@
     community.general.homebrew:
       name: python3
 
-  - name: Install luajit (for neovim)
-    community.general.homebrew:
-      name: luajit
+  # - name: Install luajit (for neovim)
+  #   community.general.homebrew:
+  #     name: luajit
 
   - name: Install neovim
     community.general.homebrew:
@@ -40,6 +40,10 @@
   - name: Install ripgrep
     community.general.homebrew:
       name: ripgrep
+
+  - name: Install peco
+    community.general.homebrew:
+      name: peco
 
   - name: Install tmux
     community.general.homebrew:
