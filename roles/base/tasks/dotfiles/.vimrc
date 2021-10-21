@@ -167,6 +167,9 @@ Plug 'majutsushi/tagbar'
 
 Plug 'darfink/vim-plist'
 
+Plug 'phaazon/hop.nvim'
+nnoremap <leader>gw :HopWord<CR>
+
 Plug 'lervag/vimtex'
 let g:tex_flavor = 'latex'
 let g:vimtex_view_method = 'skim'
