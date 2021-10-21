@@ -66,6 +66,7 @@ yabai -m rule --add app="Installer" manage=off
 yabai -m rule --add app="Archive Utility" manage=off
 yabai -m rule --add app="Übersicht" manage=off
 yabai -m rule --add app="Bartender 3" manage=off
+yabai -m rule --add app="Bartender 4" manage=off
 yabai -m rule --add app="Microsoft Remote Desktop" manage=off
 yabai -m rule --add app="Microsoft PowerPoint" opacity=1
 yabai -m rule --add app="Microsoft PowerPoint" title="What's New in PowerPoint" manage=off
@@ -83,6 +84,8 @@ yabai -m rule --add app="python3" manage=off
 yabai -m rule --add app="Dictionary" manage=off
 yabai -m rule --add app="Noty" manage=off sticky=on
 yabai -m rule --add app="Stats" manage=off
+yabai -m rule --add app="Zotero" manage=off
+yabai -m rule --add app="VMware Horizon Client" manage=off
 
 yabai -m rule --add app="Safari" title="^General$" manage=off
 yabai -m rule --add app="Safari" title="^Tabs$" manage=off

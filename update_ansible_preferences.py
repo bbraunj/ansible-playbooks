@@ -35,6 +35,14 @@ preferences = {
         "ansible_path": Path.cwd()/("roles/base/tasks/dotfiles/.zshrc"),
         "system_path": Path("~/.zshrc").expanduser()
     },
+    "skhdrc": {
+        "ansible_path": Path.cwd()/("roles/workstation/tasks/dotfiles/.skhdrc"),
+        "system_path": Path("~/.skhdrc").expanduser()
+    },
+    "yabairc": {
+        "ansible_path": Path.cwd()/("roles/workstation/tasks/dotfiles/.yabairc"),
+        "system_path": Path("~/.yabairc").expanduser()
+    },
 }
 
 no_diffs_occurred = True

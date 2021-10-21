@@ -22,6 +22,8 @@ export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 antigen bundle zsh-users/zsh-syntax-highlighting
 
+antigen bundle agkozak/zsh-z
+
 antigen apply
 # ===========
 
