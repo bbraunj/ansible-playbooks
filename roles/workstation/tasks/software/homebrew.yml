@@ -14,21 +14,25 @@
     community.general.homebrew_cask:
       name: appcleaner
 
-  - name: Install Bartender
-    community.general.homebrew_cask:
-      name: bartender
+  # - name: Install Bartender
+  #   community.general.homebrew_cask:
+  #     name: bartender
 
   - name: Install BetterTouchTool
     community.general.homebrew_cask:
       name: bettertouchtool
 
-  - name: Install BitBar
-    community.general.homebrew_cask:
-      name: bitbar
-
   - name: Install Bitwarden
     community.general.homebrew_cask:
       name: bitwarden
+
+  - name: Tap Espanso Repository
+    community.general.homebrew_tap:
+      name: federico-terzi/espanso
+
+  - name: Install Espanso
+    community.general.homebrew:
+      name: espanso
 
   - name: Install iTerm2
     community.general.homebrew_cask:
@@ -48,10 +52,6 @@
     community.general.homebrew_cask:
       name: microsoft-office
 
-  - name: Install Microsoft Remote Desktop
-    community.general.homebrew_cask:
-      name: microsoft-remote-desktop
-
   - name: Install Microsoft Teams
     tags: large
     community.general.homebrew_cask:
@@ -60,10 +60,6 @@
   - name: Install Nextcloud
     community.general.homebrew_cask:
       name: nextcloud
-
-  - name: Install SensisbleSideButtons
-    community.general.homebrew_cask:
-      name: sensiblesidebuttons
 
   - name: Install Skim
     community.general.homebrew_cask:
@@ -104,7 +100,3 @@
   - name: Install Yabai
     community.general.homebrew:
       name: koekeishiya/formulae/yabai
-
-  - name: Install Yam Display
-    community.general.homebrew_cask:
-      name: yam-display

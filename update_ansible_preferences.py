@@ -15,6 +15,14 @@ preferences = {
         "system_path": Path("~/Library/Application Support/"
                             "Alfred/Alfred.alfredpreferences/").expanduser()
     },
+    "espanso": {
+        "ansible_path": Path.cwd()/("roles/workstation/tasks/app_preferences/"
+                                    "espanso/"),
+        "system_path": Path(subprocess.run(
+            "espanso path | grep Config | awk '{ print $2 }'", shell=True,
+            stdout=subprocess.PIPE, universal_newlines=True
+        ).stdout)
+    },
     "tmux": {
         "ansible_path": Path.cwd()/("roles/base/tasks/dotfiles/.tmux.conf"),
         "system_path": Path("~/.tmux.conf").expanduser()
