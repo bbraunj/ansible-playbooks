@@ -1,0 +1,12 @@
+name: emails
+parent: default
+
+matches:
+  - trigger: ":emt"
+    replace: "Thanks,\nJosh Braun"
+
+  - trigger: ":drr"
+    replace: "Dr. Rouser,\n\n"
+
+  - trigger: ":drm"
+    replace: "Dr. Moallem,\n\n"

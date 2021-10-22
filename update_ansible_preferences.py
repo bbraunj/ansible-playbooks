@@ -11,9 +11,9 @@ import subprocess
 preferences = {
     "Alfred": {
         "ansible_path": Path.cwd()/("roles/workstation/tasks/app_preferences/"
-                                    "Alfred.alfredpreferences/"),
+                                    "Alfred.alfredpreferences/preferences"),
         "system_path": Path("~/Library/Application Support/"
-                            "Alfred/Alfred.alfredpreferences/").expanduser()
+                            "Alfred/Alfred.alfredpreferences/preferences").expanduser()
     },
     "espanso": {
         "ansible_path": Path.cwd()/("roles/workstation/tasks/app_preferences/"
@@ -30,6 +30,10 @@ preferences = {
     "vimrc": {
         "ansible_path": Path.cwd()/("roles/base/tasks/dotfiles/.vimrc"),
         "system_path": Path("~/.vimrc").expanduser()
+    },
+    "vim/spell": {
+        "ansible_path": Path.cwd()/("roles/base/tasks/dotfiles/.vim/spell"),
+        "system_path": Path("~/.vim/spell").expanduser()
     },
     "vim/colors": {
         "ansible_path": Path.cwd()/("roles/base/tasks/dotfiles/.vim/colors"),

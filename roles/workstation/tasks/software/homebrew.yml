@@ -22,9 +22,9 @@
     community.general.homebrew_cask:
       name: bettertouchtool
 
-  - name: Install Bitwarden
-    community.general.homebrew_cask:
-      name: bitwarden
+  # - name: Install Bitwarden
+  #   community.general.homebrew_cask:
+  #     name: bitwarden
 
   - name: Tap Espanso Repository
     community.general.homebrew_tap:
@@ -38,9 +38,9 @@
     community.general.homebrew_cask:
       name: iterm2
 
-  - name: Install Jump Desktop
-    community.general.homebrew_cask:
-      name: jump
+  # - name: Install Jump Desktop
+  #   community.general.homebrew_cask:
+  #     name: jump
 
   - name: Install MacTeX
     tags: large
