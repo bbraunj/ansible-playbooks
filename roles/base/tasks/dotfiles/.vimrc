@@ -7,6 +7,10 @@ filetype off                  " required
 " ############################  Vim Settings #############################
 " ########################################################################
 
+" Python Provider
+let g:python_host_prog = '/usr/local/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
+
 " --------- Indentation ---------
 set tabstop=4
 set softtabstop=4
@@ -24,7 +28,8 @@ au BufNewFile,BufRead *.java
     \ set autoindent
 
 au BufNewFile,BufRead *.tex
-    \ set textwidth=79
+    \ set textwidth=79 |
+    \ set spelllang=en_us spell
 
 " ----------- Colors ------------
 let python_highlight_all=1
@@ -165,11 +170,6 @@ Plug 'terryma/vim-multiple-cursors'
 
 Plug 'majutsushi/tagbar'
 
-Plug 'darfink/vim-plist'
-
-Plug 'phaazon/hop.nvim'
-nnoremap <leader>gw :HopWord<CR>
-
 Plug 'lervag/vimtex'
 let g:tex_flavor = 'latex'
 let g:vimtex_view_method = 'skim'
@@ -224,7 +224,14 @@ nmap <silent> <Leader>tl :TestLast<CR>
 nmap <silent> <Leader>tv :TestVisit<CR>
 
 Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/nvim-compe'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'andersevenrud/compe-tmux'
+" Plug 'kdheepak/cmp-latex-symbols'
+Plug 'octaltree/cmp-look'
+Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+Plug 'hrsh7th/nvim-cmp'
 
 " Ultisnips completion
 " --------------------
@@ -233,31 +240,23 @@ let g:UltiSnipsExpandTrigger = "<nop>"
 let g:UltiSnipsJumpForwardTrigger = "<C-i>"
 let g:UltiSnipsJumpBackwardTrigger = "<C-o>"
 let g:ulti_expand_or_jump_res = 0
-function ExpandSnippetOrCarriageReturn()
-    let snippet = UltiSnips#ExpandSnippetOrJump()
-    if g:ulti_expand_or_jump_res > 0
-        return snippet
-    else
-        return "\<CR>"
-    endif
-endfunction
-inoremap <expr> <CR> pumvisible() ? "\<C-R>=ExpandSnippetOrCarriageReturn()\<CR>" : "\<CR>"
+" function ExpandSnippetOrCarriageReturn()
+"     let snippet = UltiSnips#ExpandSnippetOrJump()
+"     if g:ulti_expand_or_jump_res > 0
+"         return snippet
+"     else
+"         return "\<CR>"
+"     endif
+" endfunction
+" inoremap <expr> <CR> pumvisible() ? "\<C-R>=ExpandSnippetOrCarriageReturn()\<CR>" : "\<CR>"
 
 call plug#end()
+
+set completeopt=menu,menuone,noselect
 
 " Python completion using built-in neovim-lsp
 " -------------------------------------------
 lua << EOF
--- Neovim-LSP
-require('lspconfig').pyright.setup{}
-require('lspconfig').texlab.setup{}
-
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-    -- Enable signs
-    signs = true,
-  }
-)
 
 -- Mappings
 local function buf_set_keymap(...)
@@ -275,59 +274,96 @@ buf_set_keymap("n", "<space>e", "<cmd>lua vim.lsp.diagnostic.show_line_diagnosti
 buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
 buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
 
--- Compe
-vim.o.completeopt = "menuone,noselect"
+-- Cmp
+local cmp = require'cmp'
+cmp.setup({
+  snippet = {
+    expand = function(args)
+      vim.fn["UltiSnips#Anon"](args.body)
+    end,
+  },
+  mapping = {
+	['<Tab>'] = function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      else
+        fallback()
+      end
+    end,
+	['<S-Tab>'] = function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      else
+        fallback()
+      end
+    end,
+	-- ["<Tab>"] = cmp.mapping(function(fallback)
+    --   if vim.fn.complete_info()["selected"] == -1 and vim.fn["UltiSnips#CanExpandSnippet"]() == 1 then
+    --     press("<C-R>=UltiSnips#ExpandSnippet()<CR>")
+    --   elseif vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
+    --     press("<ESC>:call UltiSnips#JumpForwards()<CR>")
+    --   elseif cmp.visible() then
+    --     cmp.select_next_item()
+    --   elseif has_any_words_before() then
+    --     press("<Tab>")
+    --   else
+    --     fallback()
+    --   end
+    -- end, {
+    --   "i",
+    --   "s",
+    -- }),
+    -- ["<S-Tab>"] = cmp.mapping(function(fallback)
+    --   if vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
+    --     press("<ESC>:call UltiSnips#JumpBackwards()<CR>")
+    --   elseif cmp.visible() then
+    --     cmp.select_prev_item()
+    --   else
+    --     fallback()
+    --   end
+    -- end, {
+    --   "i",
+    --   "s",
+    -- }),
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.close(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+  },
+  sources = {
+    { name = 'nvim_lsp' },
+    { name = 'ultisnips' },
+    { name = 'path' },
+    { name = 'tmux' },
+    -- { name = 'cmp-latex-symbols' },
+    { name = 'buffer' },
+  }
+})
 
-require'compe'.setup {
-  enabled = true;
-  autocomplete = true;
-  debug = false;
-  min_length = 1;
-  preselect = 'enable';
-  throttle_time = 80;
-  source_timeout = 200;
-  incomplete_delay = 400;
-  max_abbr_width = 100;
-  max_kind_width = 100;
-  max_menu_width = 100;
-  documentation = true;
-
-  source = {
-    path = true;
-    buffer = true;
-    calc = true;
-    nvim_lsp = true;
-    nvim_lua = true;
-    spell = true;
-    tags = true;
-    ultisnips = true;
-  };
+-- Neovim-LSP
+require'lspconfig'.pyright.setup{
+  capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+}
+require'lspconfig'.texlab.setup{
+  capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 }
 
-local t = function(str)
-  return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
-_G.tab_complete = function()
-  if vim.fn.pumvisible() == 1 then
-    return t "<C-n>"
-  else
-    return t "<Tab>"
-  end
-end
-_G.s_tab_complete = function()
-  if vim.fn.pumvisible() == 1 then
-    return t "<C-p>"
-  else
-    return t "<S-Tab>"
-  end
-end
-
-vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    -- Enable signs
+    signs = true,
+  }
+)
 
 EOF
+
+" FileType-specific nvim-cmp settings
+" autocmd FileType tex lua require'cmp'.setup.buffer {
+" \   sources = {
+" \     { name='look', keyword_length=2 },
+" \   },
+" \ }
 
 
 " Lastly, source any system-specific settings you may have.

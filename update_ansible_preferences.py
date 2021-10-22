@@ -100,9 +100,9 @@ elif len(apps_to_update) > 0:
             shutil.copy(preferences[app]["system_path"],
                         preferences[app]["ansible_path"])
 
-        rc = subprocess.run(["diff", "-r", preferences[app]["ansible_path"],
-                             preferences[app]["system_path"]]).returncode
-        assert rc == 0
+        # rc = subprocess.run(["diff", "-r", preferences[app]["ansible_path"],
+        #                      preferences[app]["system_path"]]).returncode
+        # assert rc == 0
 
         subprocess.run(["git", "add", preferences[app]["ansible_path"]])
 
