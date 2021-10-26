@@ -18,12 +18,17 @@
   pager = true
 [alias]
   st = status
+  stu = status -uno
   lg = log --graph --decorate --oneline
   ba = branch -a
   ch = checkout
   a  = add
   d  = diff
+  b  = branch
   rb = rebase
   rc = rebase --continue
   cm = commit -m
   ca = commit -am
+  cl = clone
+  m = merge
+  r = rebase
