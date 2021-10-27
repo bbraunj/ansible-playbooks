@@ -32,3 +32,5 @@
   cl = clone
   m = merge
   r = rebase
+  pl = pull
+  ps = push
