@@ -86,6 +86,7 @@ yabai -m rule --add app="Noty" manage=off sticky=on
 yabai -m rule --add app="Stats" manage=off
 yabai -m rule --add app="Zotero" manage=off
 yabai -m rule --add app="VMware Horizon Client" manage=off
+yabai -m rule --add app="BetterTouchTool" manage=off
 
 yabai -m rule --add app="Safari" title="^General$" manage=off
 yabai -m rule --add app="Safari" title="^Tabs$" manage=off
