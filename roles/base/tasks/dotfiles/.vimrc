@@ -183,6 +183,19 @@ Plug 'majutsushi/tagbar'
 
 Plug 'lervag/vimtex'
 let g:tex_flavor = 'latex'
+let g:vimtex_compiler_latexmk = {
+	\ 'build_dir' : 'output',
+	\ 'callback' : 1,
+	\ 'continuous' : 1,
+	\ 'executable' : 'latexmk',
+	\ 'hooks' : [],
+	\ 'options' : [
+	\   '-verbose',
+	\   '-file-line-error',
+	\   '-synctex=1',
+	\   '-interaction=nonstopmode',
+	\ ],
+	\}
 let g:vimtex_view_method = 'skim'
 
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
