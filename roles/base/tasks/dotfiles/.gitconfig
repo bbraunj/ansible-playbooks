@@ -34,3 +34,4 @@
   r = rebase
   pl = pull
   ps = push
+  rv = revert
