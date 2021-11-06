@@ -146,9 +146,6 @@ hyper - n : if [ $(ps aux | grep -v grep | grep -c iTerm2) -eq 0 ]; then open -a
 # Close iTerm2 window w/ tmux
 hyper - w : if [[ $(yabai -m query --windows --window | jq -r '.app') == "iTerm2" ]]; then tmux kill-session && yabai -m window $(yabai -m query --windows --window) --close; fi
 
-# Open Typora w/ Pratt Notes
-hyper - p : open /Users/bbraunj/Nextcloud/Documents/Pratt/Pratt_Meeting_Notes.md
-
 
 # Spaces
 # ======
@@ -158,22 +155,22 @@ hyper - p : open /Users/bbraunj/Nextcloud/Documents/Pratt/Pratt_Meeting_Notes.md
 #       (~/.config/system_specific/.skhdrc).
 #
 # Focus prev/next space
-# fn - h : yabai -m space --focus prev
-# fn - l : yabai -m space --focus next
+fn - h : yabai -m space --focus prev
+fn - l : yabai -m space --focus next
 
 # Send window to prev/next space and follow focus
-# fn + cmd - h : yabai -m window --space prev; yabai -m space --focus prev
-# fn + cmd - l : yabai -m window --space next; yabai -m space --focus next
+fn + cmd - h : yabai -m window --space prev; yabai -m space --focus prev
+fn + cmd - l : yabai -m window --space next; yabai -m space --focus next
 
 # Swap space with prev/next space
-# fn + shift - h : yabai -m space --swap prev
-# fn + shift - l : yabai -m space --swap next
+fn + shift - h : yabai -m space --swap prev
+fn + shift - l : yabai -m space --swap next
 
 # Send space to display and follow focus
-# fn + cmd + shift - h : yabai -m space --display west
-# fn + cmd + shift - l : yabai -m space --display east
-# fn + cmd + shift - k : yabai -m space --display north
-# fn + cmd + shift - j : yabai -m space --display south
+fn + cmd + shift - h : yabai -m space --display west
+fn + cmd + shift - l : yabai -m space --display east
+fn + cmd + shift - k : yabai -m space --display north
+fn + cmd + shift - j : yabai -m space --display south
 
 
 # Stacks

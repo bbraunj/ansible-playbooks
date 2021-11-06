@@ -37,6 +37,9 @@ matches:
           cmd: "echo Hello from your shell"
 
   # Markdown
+  - trigger: ":img"
+    replace: '<img src="$|$" width="500">'
+
   - trigger: ":ml"
     replace: "[$|$]({{clipboard}})"
     vars:
