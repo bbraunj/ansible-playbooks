@@ -14,9 +14,9 @@
     community.general.homebrew_cask:
       name: appcleaner
 
-  # - name: Install Bartender
-  #   community.general.homebrew_cask:
-  #     name: bartender
+  - name: Install Bartender
+    community.general.homebrew_cask:
+      name: bartender
 
   - name: Install BetterTouchTool
     community.general.homebrew_cask:
@@ -34,9 +34,17 @@
     community.general.homebrew:
       name: espanso
 
+  - name: Install Firefox
+    community.general.homebrew:
+      name: firefox
+
   - name: Install iTerm2
     community.general.homebrew_cask:
       name: iterm2
+
+  - name: Install KarabinerElements
+    community.general.homebrew_cask:
+      name: karabiner-elements
 
   # - name: Install Jump Desktop
   #   community.general.homebrew_cask:
@@ -60,6 +68,10 @@
   - name: Install Nextcloud
     community.general.homebrew_cask:
       name: nextcloud
+
+  - name: Obsidian
+    community.general.homebrew_cask:
+      name: obsidian
 
   - name: Install Skim
     community.general.homebrew_cask:
@@ -89,6 +101,10 @@
     community.general.homebrew_cask:
       name: unnaturalscrollwheels
 
+  - name: Install Visual Studio Code
+    community.general.homebrew_cask:
+      name: visual-studio-code
+
   - name: Install VLC
     community.general.homebrew_cask:
       name: vlc
@@ -97,6 +113,10 @@
     community.general.homebrew_cask:
       name: webplotdigitizer
 
-  - name: Install Yabai
+  # - name: Install Yabai
+  #   community.general.homebrew:
+  #     name: koekeishiya/formulae/yabai
+
+  - name: Install Zoom
     community.general.homebrew:
-      name: koekeishiya/formulae/yabai
+      name: zoom

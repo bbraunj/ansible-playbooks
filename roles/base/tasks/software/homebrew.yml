@@ -35,11 +35,15 @@
 
   - name: Install starship
     community.general.homebrew:
-      name: openssh
+      name: starship
 
   - name: Install ripgrep
     community.general.homebrew:
       name: ripgrep
+
+  - name: Install exa
+    community.general.homebrew:
+      name: exa
 
   - name: Install peco
     community.general.homebrew:

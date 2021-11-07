@@ -8,6 +8,9 @@
   - import_tasks: software/homebrew.yml
     when:
       ansible_facts['distribution'] == "MacOSX"
+  - import_tasks: app_preferences/app_preferences.yml
+    when:
+      ansible_facts['distribution'] == "MacOSX"
 
 # - block:
 #   become: yes

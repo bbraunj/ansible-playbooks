@@ -1,5 +1,6 @@
 - name: App Preferences
   tags:
+    - dotfiles
     - app_preferences
     - MacOSX
 
@@ -10,4 +11,12 @@
     ansible.builtin.copy:
       src: Alfred.alfredpreferences
       dest: "/Users/{{ user }}/Library/Application Support/Alfred/"
+      owner: "{{ user }}"
+
+  - name: Copy Espanso Preferences
+    when:
+      ansible_facts['distribution'] == "MacOSX"
+    ansible.builtin.copy:
+      src: espanso
+      dest: "/Users/{{ user }}/Library/Preferences/"
       owner: "{{ user }}"
