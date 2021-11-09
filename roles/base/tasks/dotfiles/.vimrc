@@ -201,6 +201,8 @@ let g:vimtex_view_method = 'skim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 nmap <leader>md <Plug>MarkdownPreviewToggle
 
+Plug 'liuchengxu/vista.vim'
+
 " ------------------------------------------------
 " ------------------- Visual ---------------------
 " ------------------------------------------------
@@ -238,9 +240,9 @@ nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
 
 Plug 'wellle/tmux-complete.vim'
 
-Plug 'benmills/vimux'
+" Plug 'benmills/vimux'
 Plug 'janko/vim-test'
-let test#strategy = "vimux"
+let test#strategy = "neovim"
 nmap <silent> <Leader>tn :TestNearest<CR>
 nmap <silent> <Leader>tf :TestFile<CR>
 nmap <silent> <Leader>ts :TestSuite<CR>
@@ -255,12 +257,15 @@ Plug 'andersevenrud/compe-tmux'
 " Plug 'kdheepak/cmp-latex-symbols'
 Plug 'octaltree/cmp-look'
 Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+Plug 'lukas-reineke/cmp-rg'
+Plug 'hrsh7th/cmp-nvim-lsp-document-symbol'
+Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 
 " Ultisnips completion
 " --------------------
 Plug 'SirVer/ultisnips'
-let g:UltiSnipsExpandTrigger = "<nop>"
+let g:UltiSnipsExpandTrigger = "<C-y>"
 let g:UltiSnipsJumpForwardTrigger = "<C-i>"
 let g:UltiSnipsJumpBackwardTrigger = "<C-o>"
 let g:ulti_expand_or_jump_res = 0
@@ -321,56 +326,78 @@ cmp.setup({
         fallback()
       end
     end,
-	-- ["<Tab>"] = cmp.mapping(function(fallback)
-    --   if vim.fn.complete_info()["selected"] == -1 and vim.fn["UltiSnips#CanExpandSnippet"]() == 1 then
-    --     press("<C-R>=UltiSnips#ExpandSnippet()<CR>")
-    --   elseif vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
-    --     press("<ESC>:call UltiSnips#JumpForwards()<CR>")
-    --   elseif cmp.visible() then
-    --     cmp.select_next_item()
-    --   elseif has_any_words_before() then
-    --     press("<Tab>")
-    --   else
-    --     fallback()
-    --   end
-    -- end, {
-    --   "i",
-    --   "s",
-    -- }),
-    -- ["<S-Tab>"] = cmp.mapping(function(fallback)
-    --   if vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
-    --     press("<ESC>:call UltiSnips#JumpBackwards()<CR>")
-    --   elseif cmp.visible() then
-    --     cmp.select_prev_item()
-    --   else
-    --     fallback()
-    --   end
-    -- end, {
-    --   "i",
-    --   "s",
-    -- }),
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.close(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    -- ['<CR>'] = cmp.mapping.confirm({ select = true }),
   },
-  sources = {
+  sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'ultisnips' },
-    { name = 'path' },
     { name = 'tmux' },
+	{ name = 'path' },
     -- { name = 'cmp-latex-symbols' },
     { name = 'buffer' },
-  }
+    { name = 'rg' }
+  })
+})
+
+cmp.setup.cmdline('/', {
+  -- mapping = {
+  --   ['<Tab>'] = function(fallback)
+  --     if cmp.visible() then
+  --       cmp.select_next_item()
+  --     else
+  --       fallback()
+  --     end
+  --   end,
+  --   ['<S-Tab>'] = function(fallback)
+  --     if cmp.visible() then
+  --       cmp.select_prev_item()
+  --     else
+  --       fallback()
+  --     end
+  --   end,
+  -- },
+  sources = cmp.config.sources({
+	{ name = 'nvim_lsp_document_symbol' }
+  }, {
+	{ name = 'buffer' }
+  })
+})
+
+cmp.setup.cmdline(':', {
+  -- mapping = {
+  --   ['<Tab>'] = function(fallback)
+  --     if cmp.visible() then
+  --       cmp.select_next_item()
+  --     else
+  --       fallback()
+  --     end
+  --   end,
+  --   ['<S-Tab>'] = function(fallback)
+  --     if cmp.visible() then
+  --       cmp.select_prev_item()
+  --     else
+  --       fallback()
+  --     end
+  --   end,
+  -- },
+  sources = cmp.config.sources({
+	{ name = 'path' }
+  }, {
+	{ name = 'cmdline' }
+  })
 })
 
 -- Neovim-LSP
-require'lspconfig'.pyright.setup{
-  capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+require('lspconfig')['pyright'].setup {
+  capabilities = capabilities
 }
-require'lspconfig'.texlab.setup{
-  capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+require('lspconfig')['texlab'].setup {
+  capabilities = capabilities
 }
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(

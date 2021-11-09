@@ -88,6 +88,8 @@ yabai -m rule --add app="Zotero" manage=off
 yabai -m rule --add app="VMware Horizon Client" manage=off
 yabai -m rule --add app="BetterTouchTool" manage=off
 yabai -m rule --add app="balenaEtcher" manage=off
+yabai -m rule --add app="Bitwarden" manage=off
+yabai -m rule --add app="VLC" manage=off
 
 yabai -m rule --add app="Safari" title="^General$" manage=off
 yabai -m rule --add app="Safari" title="^Tabs$" manage=off
