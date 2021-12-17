@@ -11,3 +11,15 @@
     - role: workstation
       tags:
         - workstation
+
+# - hosts: ubuntu
+#   connection: ssh
+#   become: no
+# 
+#   roles:
+#     - role: base
+#       tags:
+#         - base
+#     - role: workstation
+#       tags:
+#         - workstation

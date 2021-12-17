@@ -1,0 +1,56 @@
+- name: ubuntu
+  tags:
+  - software
+  - Ubuntu
+
+  block:
+  - name: Add neovim stable apt repository
+    ansible.builtin.apt_repository:
+      repo: ppa:neovim-ppa/stable
+
+  - name: Update apt sources
+    ansible.builtin.apt:
+      update_cache: yes
+
+  - name: Install neovim
+    ansible.builtin.apt:
+      name: neovim
+
+  - name: Install python3
+    ansible.builtin.apt:
+      name: python3
+
+  # - name: Install node
+  #   ansible.builtin.apt:
+  #     name: node
+  - name: Install nvm
+    ansible.builtin.shell:
+      curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+
+  - name: Install node
+    ansible.builtin.shell:
+      $HOME/.nvm/nvm.sh && nvm install node
+
+  - name: Install starship
+    community.general.snap:
+      name: starship
+
+  - name: Install ripgrep
+    ansible.builtin.apt:
+      name: ripgrep
+
+  # - name: Install exa
+  #   ansible.builtin.apt:
+  #     name: exa
+
+  - name: Install peco
+    ansible.builtin.apt:
+      name: peco
+
+  - name: Install tmux
+    ansible.builtin.apt:
+      name: tmux
+
+  - name: Upgrade all apt packages
+    ansible.builtin.apt:
+      upgrade: yes

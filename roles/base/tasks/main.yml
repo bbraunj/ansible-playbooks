@@ -11,5 +11,8 @@
   - import_tasks: software/homebrew.yml
     when:
       ansible_facts['distribution'] == "MacOSX"
+  - import_tasks: software/ubuntu.yml
+    when:
+      ansible_facts['distribution'] == "Ubuntu"
   - import_tasks: software/python.yml
   - import_tasks: software/miscellaneous.yml
