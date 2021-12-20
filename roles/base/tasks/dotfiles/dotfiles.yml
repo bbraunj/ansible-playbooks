@@ -39,12 +39,17 @@
       owner: "{{ user }}"
       backup: yes
 
-  - name: Copy .tmux directory
-    ansible.builtin.copy:
-      src: .tmux
-      dest: "{{ home }}/"
-      owner: "{{ user }}"
-      backup: yes
+  - name: Checkout tpm to .tmux directory
+    git:
+      repo: https://github.com/tmux-plugins/tpm.git
+      dest: "{{ home }}/.tmux/tpm"
+
+  # - name: Copy .tmux directory
+  #   ansible.builtin.copy:
+  #     src: .tmux
+  #     dest: "{{ home }}/"
+  #     owner: "{{ user }}"
+  #     backup: yes
 
   - name: Copy .zshrc
     ansible.builtin.copy:

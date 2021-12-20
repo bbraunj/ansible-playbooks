@@ -1,0 +1,27 @@
+- name: Dotfiles
+  tags:
+  - preferences
+  - dotfiles
+  - RHEL8
+
+  block:
+  - name: Copy qtile config
+    copy:
+      src: qtile
+      dest: "{{ home }}/.config/"
+      owner: "{{ user }}"
+      force: no
+
+  - name: Copy rofi config
+    copy:
+      src: rofi
+      dest: "{{ home }}/.config/"
+      owner: "{{ user }}"
+      force: no
+
+  - name: Copy .alacritty.yml
+    ansible.builtin.copy:
+      src: .alacritty.yml
+      dest: "{{ home }}/.alacritty.yml"
+      owner: "{{ user }}"
+      backup: yes

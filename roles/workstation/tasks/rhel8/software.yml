@@ -1,0 +1,116 @@
+- name: rhel8
+  become: yes
+  tags:
+  - software
+  - RHEL8
+
+  block:
+  - name: Enable codeready-builder Repo
+    shell: subscription-manager repos --enable codeready-builder-for-rhel-8-x86_64-rpms
+
+  - name: Add EPEL8 Repo
+    yum:
+      name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+      state: present
+
+  - name: Add VSCode Repo
+    shell: rpm --import https://packages.microsoft.com/keys/microsoft.asc
+
+  - name: Copy VSCode repo file
+    copy:
+      src: vscode.repo
+      dest: "/etc/yum.repos.d/vscode.repo"
+      owner: "{{ user }}"
+      backup: no
+
+  - name: Install VSCode
+    yum:
+      name: code
+
+  - name: Install Raven repository for rofi
+    yum:
+      name: https://pkgs.dyn.su/el8/base/x86_64/raven-release-1.0-2.el8.noarch.rpm
+      state: present
+
+  - name: Install rofi
+    yum:
+      name: rofi
+
+  - name: Install python39-devel
+    yum:
+      name: python39-devel
+
+  - name: Install htop
+    yum:
+      name: htop
+
+  - name: Install tmux dependencies
+    yum:
+      name: "{{ packages }}"
+    vars:
+      packages:
+      - libevent-devel 
+      - ncurses-devel 
+      - gcc
+      - make
+      - bison
+      - pkg-config
+
+  - name: Install tmux 3.2a
+    shell: roles/workstation/tasks/rhel8/install_tmux.sh
+
+  - name: Install qtile dependencies
+    yum:
+      name: python3-cairo
+
+  - name: Install qtile
+    pip: 
+      name: qtile
+
+  - name: Install pynvim
+    pip:
+      name: pynvim
+
+  - name: Install starship
+    shell: sh -c "$(curl -fsSL https://starship.rs/install.sh)" -- -y
+
+  - name: Install hack nerd font
+    shell: roles/workstation/tasks/rhel8/install_hack_nerd_font.sh
+
+  - name: Install nvm
+    shell: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+    become_user: "{{ user }}"
+
+  - name: Install node
+    shell: \. "{{ home }}/.nvm/nvm.sh" && nvm install node
+    become_user: "{{ user }}"
+
+  - name: Install pyright Python language server
+    shell: \. "{{ home }}/.nvm/nvm.sh" && npm install -g pyright
+    become_user: "{{ user }}"
+
+  - name: Install alacritty yum dependencies
+    yum:
+      name: "{{ packages }}"
+    vars:
+      packages:
+        - cmake
+        - freetype-devel
+        - fontconfig-devel
+        - libxcb-devel
+        - libxkbcommon-devel
+        - xcb-util-devel
+
+  - name: Install the 'Development tools' package group (alacritty dependency)
+    yum:
+      name: "@Development tools"
+      state: present
+
+  - name: Install rust (alacritty dependency)
+    shell: sh -c "$(curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs)" -- -y && source "{{ home }}/.cargo/env" && rustup override set stable && rustup update stable
+    become_user: "{{ user }}"
+
+  - name: Install alacritty
+    tags: alacritty
+    shell: roles/workstation/tasks/rhel8/install_alacritty.sh
+    become_user: "{{ user }}"
